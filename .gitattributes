@@ -1,0 +1,9 @@
+# 统一换行，避免 Windows 上 checkout 出的 .sh 带 CRLF 后 Termux 里执行失败
+* text=auto
+*.sh text eol=lf
+*.js text eol=lf
+*.java text eol=lf
+*.xml text eol=lf
+*.gradle text eol=lf
+*.md text eol=lf
+*.png binary

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="page_bg">#F2F3F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="accent">#4F6EF7</color>
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="panel_bg">#E6111216</color>
+    <color name="chip_bg">#26FFFFFF</color>
+    <color name="chip_text">#FFFFFF</color>
+    <color name="fab_bg">#CC111216</color>
+    <color name="fab_stroke">#33FFFFFF</color>
+    <color name="launcher_bg">#FFED87</color>
+    <color name="scrim">#66000000</color>
+</resources>
