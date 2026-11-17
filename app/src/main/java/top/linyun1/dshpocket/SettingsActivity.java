@@ -98,9 +98,10 @@ public class SettingsActivity extends Activity {
         findViewById(R.id.btn_done).setOnClickListener(v -> finish());
 
         findViewById(R.id.btn_url_reset).setOnClickListener(v -> {
-            etUrl.setText(Prefs.DEFAULT_URL);
-            Prefs.setUrl(this, Prefs.DEFAULT_URL);
+            etUrl.setText("");
+            Prefs.setUrl(this, "");
             MainActivity.needReload = true;
+            toast(getString(R.string.settings_url_cleared));
         });
 
         findViewById(R.id.btn_url_local).setOnClickListener(v -> {
@@ -151,7 +152,7 @@ public class SettingsActivity extends Activity {
             finish();
         });
 
-        ((TextView) findViewById(R.id.tv_about)).setText(getString(R.string.about_text));
+        ((TextView) findViewById(R.id.tv_about)).setText(getString(R.string.about_text, BuildConfig.VERSION_NAME));
         refreshPinState();
         refreshLocalState();
     }
@@ -251,8 +252,9 @@ public class SettingsActivity extends Activity {
     private void savePin() {
         String pin = etPin.getText().toString().trim();
         String url = etUrl.getText().toString().trim();
-        if (url.isEmpty()) {
-            url = Prefs.DEFAULT_URL;
+        if (url.isEmpty() && PinStore.has(this)) {
+            // 地址栏空着但密码已经在：不要用地址覆盖掉用户原本填好的地址。
+            url = Prefs.url(this);
         }
         Prefs.setUrl(this, url);
 

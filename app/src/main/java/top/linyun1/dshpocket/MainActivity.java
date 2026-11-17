@@ -111,9 +111,20 @@ public class MainActivity extends Activity {
         setupPredictiveBack();
         setupNetworkRetry();
 
-        loadStart(Prefs.url(this));
+        String start = Prefs.url(this);
+        if (start.isEmpty()) {
+            promptForUrl();
+        } else {
+            loadStart(start);
+        }
         applyPrefs(false);
         maybeAskPin();
+    }
+
+    /** 还没配置访问地址：直接把人送到设置页，别去加载空 URL。 */
+    private void promptForUrl() {
+        toast(getString(R.string.settings_url_required));
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     // ---------------------------------------------------------------- WebView
@@ -761,7 +772,7 @@ public class MainActivity extends Activity {
     private void showAbout() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.about_title)
-                .setMessage(R.string.about_text)
+                .setMessage(getString(R.string.about_text, BuildConfig.VERSION_NAME))
                 .setPositiveButton(android.R.string.ok, null)
                 .show();
     }
@@ -793,6 +804,11 @@ public class MainActivity extends Activity {
     /** 所有主动发起的加载都从这里走：重置“本次加载是否报过错”的标记。 */
     private void loadStart(String url) {
         loadHadError = false;
+        if (url == null || url.trim().isEmpty()) {
+            // 地址被清空（或者本来就没配）：不加载空白页，直接引导去设置。
+            promptForUrl();
+            return;
+        }
         web.loadUrl(url);
     }
 

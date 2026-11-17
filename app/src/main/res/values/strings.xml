@@ -15,7 +15,7 @@
     <string name="drawer_keep_screen">保持屏幕常亮</string>
     <string name="drawer_settings">设置</string>
     <string name="drawer_about">关于</string>
-    <string name="drawer_version">版本 1.0.10</string>
+    <string name="drawer_version">版本 %1$s</string>
 
     <!-- 首次启动：保存密码 -->
     <string name="pin_dialog_title">保存访问密码</string>
@@ -44,8 +44,10 @@
     <!-- 设置页 -->
     <string name="section_conn">连接</string>
     <string name="settings_url">访问地址</string>
-    <string name="settings_url_hint">https://pocket.linyun1.top/</string>
-    <string name="settings_url_reset">恢复默认地址</string>
+    <string name="settings_url_hint">https://你的域名/  或  http://192.168.1.10:18766/</string>
+    <string name="settings_url_reset">清空地址</string>
+    <string name="settings_url_cleared">已清空地址</string>
+    <string name="settings_url_required">请先在设置里填写 DSH 访问地址</string>
     <string name="settings_url_local">切换到本机（127.0.0.1）</string>
     <string name="settings_url_local_hint">先在手机 Termux 里跑 bash start-dsh.sh（它会拉起 dsh web 并在 127.0.0.1:3081 起一个固定入口），再点这里，就不需要电脑一直开着。</string>
     <string name="settings_url_local_set">已切换到本机地址</string>
@@ -71,7 +73,7 @@
     <string name="settings_done">完成</string>
     <string name="section_about">关于</string>
     <string name="about_title">关于 Tsugu_official</string>
-    <string name="about_text">Tsugu_official 1.0.16\n\n把 https://pocket.linyun1.top/ 包成原生外壳：WebView 保存 30 天登录 Cookie，密码用 Android Keystore 加密后只存在本机。\n\n支持左右横滑开合网页自带侧边栏、附件上传、语音权限、文件下载、断网自动重试，以及字号 / 深色 / 全屏等显示设置。也可以把地址切到 http://127.0.0.1:3080/（填好 token 会自动拼上），直接连手机上 Termux / Ubuntu 里跑的 DSH。</string>
+    <string name="about_text">Tsugu_official %1$s\n\n把你自己搭的 DSH Web 页面（电脑上跑的 dsh web，或经隧道 / 反向代理暴露出来的地址）包成原生外壳：WebView 保存 30 天登录 Cookie，密码用 Android Keystore 加密后只存在本机。\n\n首次启动需要先在设置里填访问地址，源码里没有预设任何域名。支持左右横滑开合网页自带侧边栏、附件上传、语音权限、文件下载、断网自动重试，以及字号 / 深色 / 全屏等显示设置。也可以把地址切到 http://127.0.0.1:3080/（填好 token 会自动拼上），直接连手机上 Termux / Ubuntu 里跑的 DSH。</string>
     <string name="section_local">本机 DSH</string>
     <string name="settings_local_state_unknown">状态：检测中…</string>
     <string name="settings_local_state_running">状态：运行中</string>
@@ -84,7 +86,7 @@
     <string name="settings_local_no_termux">没找到 Termux，请先安装并跑过 ~/all.sh</string>
     <string name="mode_switch_title">模式切换</string>
     <string name="mode_item_local">本机模式（手机自己跑）</string>
-    <string name="mode_item_remote">电脑模式（pocket.linyun1.top）</string>
+    <string name="mode_item_remote">电脑模式（远程地址）</string>
     <string name="mode_item_start">一键启动本机 DSH</string>
     <string name="mode_item_stop">一键停止本机 DSH</string>
     <string name="mode_item_settings">更多设置 / 本机一键启停</string>

@@ -16,8 +16,8 @@ android {
         applicationId "top.linyun1.dshpocket"
         minSdk 26
         targetSdk 36
-        versionCode 17
-        versionName "1.0.16"
+        versionCode 18
+        versionName "1.1.0"
         resourceConfigurations += ["zh", "en"]
     }
 
@@ -49,6 +49,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        // 「关于」里的版本号读 BuildConfig.VERSION_NAME，别再手写死字符串。
+        buildConfig true
     }
 
     lint {

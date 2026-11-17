@@ -81,7 +81,7 @@ gradle -p . assembleRelease    # 正式包
 
 1. 装好 APK；
 2. 让 DSH 在手机上可达：电脑上跑 `dsh web`，再用 Cloudflare Tunnel（或任意内网穿透）暴露成一个 HTTPS 地址；
-3. 打开 App → 左上角 ☰ → 设置 → **访问地址** 填你自己的地址；
+3. 首次打开 App 会直接跳到设置页（源码里不预设任何地址）→ **访问地址** 填你自己的地址；
 4. 填**访问密码**（就是 DSH 那层的密码，不是模型 API Key），可勾选保存；
 5. 打开"自动填写密码并登录"，以后点开 App 就是已登录状态。
 
@@ -120,7 +120,7 @@ Tsugu_official (WebView)
 app/src/main/java/top/linyun1/dshpocket/
   MainActivity.java     WebView 外壳：抽屉、自动登录注入、文件选择、下载、返回键、断网重试
   SettingsActivity.java 地址 / 密码 / 显示 / 维护 / 本机一键启停
-  Prefs.java            SharedPreferences 封装（tsugu_prefs）与默认地址
+  Prefs.java            SharedPreferences 封装（tsugu_prefs）与地址记忆（地址留空＝未配置）
   PinStore.java         Android Keystore AES/GCM 加密存密码
   PhoneDsh.java         通过 Termux 的 RUN_COMMAND 服务启停本机 DSH
 app/src/main/res/       布局、图标、文案（values/strings.xml）
@@ -143,7 +143,9 @@ scripts/                Termux 侧脚本：redirect.js、启动、修复、收�
 
 ## 版本
 
-当前 `1.0.16`（`versionCode 17`）。
+当前 `1.1.0`（`versionCode 18`）。
+
+`1.1.0` 的变更：源码里不再预设任何域名——访问地址由使用者首次启动时自己填（`Prefs.DEFAULT_URL` 为空串，首次启动直接跳设置页）；"关于"里的版本号改为读 `BuildConfig.VERSION_NAME`，不再手写死。
 
 ## 许可
 

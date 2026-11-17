@@ -6,7 +6,11 @@ import android.content.SharedPreferences;
 /** 轻量偏好存储，不依赖 AndroidX。 */
 public final class Prefs {
 
-    public static final String DEFAULT_URL = "https://pocket.linyun1.top/";
+    /**
+     * 默认地址故意留空：地址由使用者在设置里自己填，源码里不写任何具体域名。
+     * 空值表示「还没配置」，首次启动会直接跳到设置页。
+     */
+    public static final String DEFAULT_URL = "";
     /** 手机上的固定入口：跳到当前 dsh web 的带 token 地址（端口 3081）。 */
     public static final String LOCAL_URL = "http://127.0.0.1:3081/";
     /** dsh web 本身监听的端口。 */
@@ -33,7 +37,7 @@ public final class Prefs {
     public static String url(Context c) {
         String v = sp(c).getString(K_URL, DEFAULT_URL);
         if (v == null || v.trim().isEmpty()) {
-            return DEFAULT_URL;
+            return "";
         }
         v = v.trim();
         if (!v.startsWith("http://") && !v.startsWith("https://")) {
